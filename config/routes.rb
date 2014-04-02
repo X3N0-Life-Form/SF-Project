@@ -1,4 +1,6 @@
 FirstApp::Application.routes.draw do
+  get "users/new"
+  get '/signup',  :to => 'users#new'
   root :to => 'pages#home'
 
   get '/contact', :to => 'pages#contact'
