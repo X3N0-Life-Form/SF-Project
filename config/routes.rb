@@ -1,9 +1,15 @@
 FirstApp::Application.routes.draw do
+  root :to => 'pages#home'
+
+  get '/contact', :to => 'pages#contact'
+  get '/about',   :to => 'pages#about'
+  get '/help',    :to => 'pages#help'
+
   get "pages/home"
   get "pages/contact"
   get "pages/about"
-  resources :microposts
 
+  resources :microposts
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
