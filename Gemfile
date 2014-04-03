@@ -50,3 +50,5 @@ group :development, :test do
   gem 'webrat'
   gem 'annotate'
 end
+
+gem 'protected_attributes'
