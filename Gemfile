@@ -49,6 +49,8 @@ group :development, :test do
   gem 'spork'
   gem 'webrat'
   gem 'annotate'
+  gem 'factory_girl_rails', '1.0'
 end
 
 gem 'protected_attributes'
+gem 'gravatar_image_tag', '1.0.0.pre2'
