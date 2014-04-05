@@ -10,7 +10,7 @@ describe User do
       :date_of_birth => "06/01/1990",
       :weight => "65",
       :ideal_weight => "60",
-      :do_sport => true,
+      :do_sport => false,
       :would_do_sport => true
     }
   end
@@ -151,27 +151,32 @@ describe User do
   describe "date of birth validation" do
 
     it "requires a date of birth" do
-      User.new(@attr.merge(:datenaiss => "")).
+      User.new(@attr.merge(:date_of_birth => "")).
         should_not be_valid
     end
 
     it "invalid date --> too many days" do
-      User.new(@attr.merge(:datenaiss => "35/01/1990")).
+      User.new(@attr.merge(:date_of_birth => "35/01/1990")).
+        should_not be_valid
+    end
+
+    it "invalid date --> not enough days" do
+      User.new(@attr.merge(:date_of_birth => "00/01/1990")).
         should_not be_valid
     end
 
     it "invalid date --> too many months" do
-      User.new(@attr.merge(:datenaiss => "06/13/1990")).
+      User.new(@attr.merge(:date_of_birth => "06/13/1990")).
         should_not be_valid
     end
 
     it "invalid date --> invalid format" do
-      User.new(@attr.merge(:datenaiss => "06011990")).
+      User.new(@attr.merge(:date_of_birth => "06011990")).
         should_not be_valid
     end
 
     it "invalid date --> too long" do
-      User.new(@attr.merge(:datenaiss => "06/01/19900")).
+      User.new(@attr.merge(:date_of_birth => "06/01/19900")).
         should_not be_valid
     end
 

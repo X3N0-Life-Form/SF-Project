@@ -22,18 +22,18 @@ describe UsersController do
 
     it "devrait avoir le bon titre" do
       get :show, :id => @user
-      response.should have_selector("title", :content => @user.nom)
+      response.should have_selector("title", :content => @user.name)
     end
 
     it "devrait inclure le nom de l'utilisateur" do
       get :show, :id => @user
-      response.should have_selector("h1", :content => @user.nom)
+      response.should have_selector("h1", :content => @user.name)
     end
 
-    it "devrait avoir une image de profil" do
-      get :show, :id => @user
-      response.should have_selector("h1>img", :class => "gravatar")
-    end
+    #it "devrait avoir une image de profil" do
+    #  get :show, :id => @user
+    #  response.should have_selector("h1>img", :class => "gravatar")
+    #end
 
   end
 
@@ -49,9 +49,9 @@ describe UsersController do
     end
   end
 
-###############
-### Sign Up ###
-###############
+  ###############
+  ### Sign Up ###
+  ###############
 
   describe "POST 'create'" do
 
@@ -84,6 +84,9 @@ describe UsersController do
     
     before(:each) do
       @attr = { :name => "New User", :email => "user@example.com",
+        :date_of_birth => "06/01/1990",
+        :weight => "65", :ideal_weight => "60",
+        :do_sport => false, :would_do_sport => true,
         :password => "foobar", :password_confirmation => "foobar" }
     end
     

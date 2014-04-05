@@ -19,6 +19,11 @@ describe "Users" do
           visit signup_path
           fill_in "Name",         :with => ""
           fill_in "eMail",        :with => ""
+          fill_in "Date of Birth (dd/mm/yyyy)", :with => ""
+          fill_in "Weight", :with => ""
+          fill_in "Ideal Weight", :with => ""
+         # choose "Do you do sports?"
+         # choose "Would you like to do sports?"
           fill_in "Password",     :with => ""
           fill_in "Confirm password", :with => ""
           click_button
