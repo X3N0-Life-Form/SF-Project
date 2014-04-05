@@ -42,14 +42,14 @@ describe "LayoutLinks" do
       @user = Factory(:user)
       visit signin_path
       fill_in :email,    :with => @user.email
-      fill_in "Mot de passe", :with => @user.password
+      fill_in "Password", :with => @user.password
       click_button
     end
 
-    it "devrait avoir un lien de déconnxion" do
+    it "devrait avoir un lien de déconnexion" do
       visit root_path
       response.should have_selector("a", :href => signout_path,
-                                         :content => "Déconnexion")
+                                         :content => "Logout")
     end
 
     it "devrait avoir un lien vers le profil" do

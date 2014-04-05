@@ -72,27 +72,27 @@ describe User do
   ################
 
   it "devrait exiger un mot de passe" do
-      User.new(@attr.merge(:password => "", :password_confirmation => "")).
-        should_not be_valid
-    end
+    User.new(@attr.merge(:password => "", :password_confirmation => "")).
+      should_not be_valid
+  end
 
-    it "devrait exiger une confirmation du mot de passe qui correspond" do
-      User.new(@attr.merge(:password_confirmation => "invalid")).
-        should_not be_valid
-    end
-
-    it "devrait rejeter les mots de passe (trop) courts" do
-      short = "a" * 5
-      hash = @attr.merge(:password => short, :password_confirmation => short)
-      User.new(hash).should_not be_valid
-    end
-
-    it "devrait rejeter les (trop) longs mots de passe" do
-      long = "a" * 41
-      hash = @attr.merge(:password => long, :password_confirmation => long)
-      User.new(hash).should_not be_valid
-    end
-
+  it "devrait exiger une confirmation du mot de passe qui correspond" do
+    User.new(@attr.merge(:password_confirmation => "invalid")).
+      should_not be_valid
+  end
+  
+  it "devrait rejeter les mots de passe (trop) courts" do
+    short = "a" * 5
+    hash = @attr.merge(:password => short, :password_confirmation => short)
+    User.new(hash).should_not be_valid
+  end
+  
+  it "devrait rejeter les (trop) longs mots de passe" do
+    long = "a" * 41
+    hash = @attr.merge(:password => long, :password_confirmation => long)
+    User.new(hash).should_not be_valid
+  end
+  
   describe "password encryption" do
     
     before(:each) do
@@ -129,13 +129,17 @@ describe User do
 
   describe "Method has_password?" do
 
-      it "doit retourner true si les mots de passe coïncident" do
-        @user.has_password?(@attr[:password]).should be_true
-      end    
-
-      it "doit retourner false si les mots de passe divergent" do
-        @user.has_password?("invalide").should be_false
-      end 
+    before(:each) do
+      @user = User.create!(@attr)
     end
+
+    it "doit retourner true si les mots de passe coïncident" do
+      @user.has_password?(@attr[:password]).should be_true
+    end    
+    
+    it "doit retourner false si les mots de passe divergent" do
+      @user.has_password?("invalide").should be_false
+    end 
+  end
 
 end
