@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # j?j/mm/aaaa
-  date_regex = /\A((3[0-1])|([0-2][0-9]))\/((0[1-9])|(1[0-2]))\/[0-9]{4}\z/i
+  date_regex = /\A((3[0-1])|([1-2][0-9])|(0?[1-9]))\/((0[1-9])|(1[0-2]))\/[0-9]{4}\z/i
   
   validates :name, :presence => true,
                    :length   => { :maximum => 50 }
