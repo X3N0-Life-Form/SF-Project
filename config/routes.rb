@@ -1,6 +1,7 @@
 FirstApp::Application.routes.draw do
+  get "sessions/new"
   get "users/new"
-  get '/signup',  :to => 'users#new'
+
   root :to => 'pages#home'
 
   get '/contact', :to => 'pages#contact'
@@ -13,8 +14,11 @@ FirstApp::Application.routes.draw do
 
   resources :microposts
   resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
 
   get '/signup',  :to => 'users#new'
+  get '/signin',  :to => 'sessions#new'
+  get '/signout', :to => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
