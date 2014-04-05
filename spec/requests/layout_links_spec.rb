@@ -32,7 +32,7 @@ describe "LayoutLinks" do
     it "doit avoir un lien de connexion" do
       visit root_path
       response.should have_selector("a", :href => signin_path,
-                                         :content => "S'identifier")
+                                         :content => "Login")
     end
   end
 

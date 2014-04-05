@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation,
+    :date_of_birth, :weight, :ideal_weight, :do_sport, :would_do_sport
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  # j?j/mm/aaaa
+  date_regex = /\A[0-3]?[0-9]\/[0-1][0-9]\/[0-9]{4}\z/i
   
   validates :name, :presence => true,
                    :length   => { :maximum => 50 }
@@ -16,6 +20,22 @@ class User < ActiveRecord::Base
                        :confirmation => true,
                        :length       => { :within => 6..40 }
 
+  ################
+  ### my stuff ###
+  ################
+
+  validates :date_of_birth, :presence => true,
+                            :length   => { :maximum => 10 },
+                            :format   => { :with => date_regex }
+
+  validates :do_sport,       :presence => true
+  validates :would_do_sport, :presence => true
+
+  validates :weight, :presence => true
+  validates :ideal_weight, :presence => true,
+                           :numericality => { :less_than => :weight }
+
+  ### end of my stuff ###
   before_save :encrypt_password
 
   # Retour true (vrai) si le mot de passe correspond.

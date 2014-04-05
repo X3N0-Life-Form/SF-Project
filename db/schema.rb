@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403213603) do
+ActiveRecord::Schema.define(version: 20140405193714) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 20140403213603) do
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
+    t.string   "date_of_birth"
+    t.integer  "weight"
+    t.integer  "ideal_weight"
+    t.boolean  "do_sport"
+    t.boolean  "would_do_sport"
   end
 
 end

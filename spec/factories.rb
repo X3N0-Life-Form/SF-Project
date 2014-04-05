@@ -6,4 +6,9 @@ Factory.define :user do |user|
   user.email                 "mhartl@example.com"
   user.password              "foobar"
   user.password_confirmation "foobar"
+  user.date_of_birth         "06/01/1990"
+  user.weight                65
+  user.ideal_weight          60
+  user.do_sport              false
+  user.would_do_sport        true
 end

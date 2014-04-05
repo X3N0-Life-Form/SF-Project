@@ -6,7 +6,13 @@ describe User do
     @attr = { :name => "Example User",
       :email => "user@example.com",
       :password => "foobar",
-      :password_confirmation => "foobar"}
+      :password_confirmation => "foobar",
+      :date_of_birth => "06/01/1990",
+      :weight => "65",
+      :ideal_weight => "60",
+      :do_sport => true,
+      :would_do_sport => true
+    }
   end
 
   it "should create a new instance with valid attributes" do
@@ -140,6 +146,35 @@ describe User do
     it "doit retourner false si les mots de passe divergent" do
       @user.has_password?("invalide").should be_false
     end 
+  end
+
+  describe "date of birth validation" do
+
+    it "requires a date of birth" do
+      User.new(@attr.merge(:datenaiss => "")).
+        should_not be_valid
+    end
+
+    it "invalid date --> too many days" do
+      User.new(@attr.merge(:datenaiss => "35/01/1990")).
+        should_not be_valid
+    end
+
+    it "invalid date --> too many months" do
+      User.new(@attr.merge(:datenaiss => "06/13/1990")).
+        should_not be_valid
+    end
+
+    it "invalid date --> invalid format" do
+      User.new(@attr.merge(:datenaiss => "06011990")).
+        should_not be_valid
+    end
+
+    it "invalid date --> too long" do
+      User.new(@attr.merge(:datenaiss => "06/01/19900")).
+        should_not be_valid
+    end
+
   end
 
 end
