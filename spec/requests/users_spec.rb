@@ -2,13 +2,6 @@
 require 'spec_helper'
 
 describe "Users" do
-  describe "GET /users" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get users_index_path
-      response.status.should be(200)
-    end
-  end
 
   describe "sign up" do
 
@@ -22,10 +15,10 @@ describe "Users" do
           fill_in "Date of Birth (dd/mm/yyyy)", :with => ""
           fill_in "Weight", :with => ""
           fill_in "Ideal Weight", :with => ""
-         # choose "Do you do sports?"
-         # choose "Would you like to do sports?"
+          # "Do you do sports?"
+          # "Would you like to do sports?"
           fill_in "Password",     :with => ""
-          fill_in "Confirm password", :with => ""
+          fill_in "Confirm Password", :with => ""
           click_button
           response.should render_template('users/new')
           response.should have_selector("div#error_explanation")
@@ -43,8 +36,8 @@ describe "Users" do
           fill_in "Date of Birth (dd/mm/yyyy)", :with => "01/01/1990"
           fill_in "Weight", :with => "65"
           fill_in "Ideal Weight", :with => "60"
-          choose "Do you do sports?"
-          choose "Would you like to do sports?"
+          # "Do you do sports?"
+          # "Would you like to do sports?"
           fill_in "Password", :with => "foobar"
           fill_in "Confirm password", :with => "foobar"
           click_button
@@ -65,7 +58,7 @@ describe "Users" do
         fill_in "eMail",    :with => ""
         fill_in "Password", :with => ""
         click_button
-        response.should have_selector("div.flash.error", :content => "Invalid")
+        response.should have_selector("div.flash.error", :content => "Email/Password combination ")
       end
     end
 
