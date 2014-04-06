@@ -38,6 +38,21 @@ class User < ActiveRecord::Base
                            :numericality => { :less_than => :weight },
                            :format => { :with => float_regex }
 
+  #No time to test first
+  def getAge()
+    birth = Date.parse(self.date_of_birth)
+    now = Date.today
+    age = now.year - birth.year
+    if now.month < birth.month
+      age = age - 1
+    elsif now.month == birth.month
+      if now.day > birth.day
+        age = age - 1
+      end
+    end
+    return age
+  end
+
   ### end of my stuff ###
   before_save :encrypt_password
 
