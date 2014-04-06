@@ -154,6 +154,11 @@ describe User do
 
   describe "date of birth validation" do
 
+    it "valid" do
+      User.new(@attr.merge(:date_of_birth => "06/01/1990")).
+        should be_valid
+    end
+
     it "requires a date of birth" do
       User.new(@attr.merge(:date_of_birth => "")).
         should_not be_valid
@@ -193,10 +198,21 @@ describe User do
 
   describe "weight regex" do
 
-    it "empty" do
-      User.new(@attr.merge(:weight => "")).
-        should_not be_valid
+    it "valid" do
+      User.new(@attr.merge(:weight => "70")).
+        should be_valid
     end
+
+    it "valid 2.0" do
+      User.new(@attr.merge(:weight => "70.0")).
+        should be_valid
+    end
+
+#
+#    it "empty" do
+#      User.new(@attr.merge(:weight => "")).
+#        should_not be_valid
+#    end
 
     it "invalid weight --> .0" do
       User.new(@attr.merge(:weight => ".0")).

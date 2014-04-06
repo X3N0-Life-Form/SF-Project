@@ -26,5 +26,17 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>Date of Birth:</strong>
+  <%= @user.date_of_birth %>
+  (Age <%= "insert age here" %>)
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @user.weight %> kg
+  (ideal weight: <%= @user.ideal_weight %> kg)
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
