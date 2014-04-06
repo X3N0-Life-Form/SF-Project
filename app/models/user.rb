@@ -2,7 +2,7 @@
 class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :password, :password_confirmation,
-    :date_of_birth, :weight, :ideal_weight, :do_sport, :would_do_sport
+    :date_of_birth, :weight, :ideal_weight, :height, :do_sport, :would_do_sport
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # j?j/mm/aaaa
@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
                             :length   => { :maximum => 10 },
                             :format   => { :with => date_regex }
 
-  #otherwise forces the user to do sport...
+  # leave commented, otherwise forces the user to do sport...
   #validates :do_sport,       :presence => true
   #validates :would_do_sport, :presence => true
 
