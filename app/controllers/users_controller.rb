@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   def index
+    @title = "User list"
     @users = User.all
   end
 
