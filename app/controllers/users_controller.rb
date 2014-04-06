@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
     @title = "Sign Up"
-    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
     @title = @user.name
-    @users = User.all
   end
 
   def create
