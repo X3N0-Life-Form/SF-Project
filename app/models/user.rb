@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def getIMC()
-    return self.weight / ( self.height * self.height )
+    return (self.weight / ( self.height * self.height )).round(2)
   end
 
   ### end of my stuff ###
