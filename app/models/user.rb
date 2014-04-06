@@ -29,8 +29,9 @@ class User < ActiveRecord::Base
                             :length   => { :maximum => 10 },
                             :format   => { :with => date_regex }
 
+  #otherwise forces the user to do sport...
   #validates :do_sport,       :presence => true
-  validates :would_do_sport, :presence => true
+  #validates :would_do_sport, :presence => true
 
   validates :weight, :presence => true,
                      :format => { :with => float_regex }
