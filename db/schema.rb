@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20140405193714) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.string   "date_of_birth"
-    t.integer  "weight"
-    t.integer  "ideal_weight"
+    t.float    "weight"
+    t.float    "ideal_weight"
     t.boolean  "do_sport"
     t.boolean  "would_do_sport"
   end

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   # j?j/mm/aaaa
   date_regex = /\A((3[0-1])|([1-2][0-9])|(0?[1-9]))\/((0[1-9])|(1[0-2]))\/[0-9]{4}\z/i
+  float_regex = /\A[0-9]+(.[0-9]+)*\z/i
   
   validates :name, :presence => true,
                    :length   => { :maximum => 50 }
@@ -31,9 +32,11 @@ class User < ActiveRecord::Base
   #validates :do_sport,       :presence => true
   validates :would_do_sport, :presence => true
 
-  validates :weight, :presence => true
+  validates :weight, :presence => true,
+                     :format => { :with => float_regex }
   validates :ideal_weight, :presence => true,
-                           :numericality => { :less_than => :weight }
+                           :numericality => { :less_than => :weight },
+                           :format => { :with => float_regex }
 
   ### end of my stuff ###
   before_save :encrypt_password
