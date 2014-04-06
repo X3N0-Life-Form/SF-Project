@@ -39,6 +39,16 @@
 </p>
 
 <p>
+  <strong>Height:</strong>
+  <%= @user.height %> m
+</p>
+
+<p>
+  <strong>IMC/BMI:</strong>
+  <%= @user.getIMC() %>
+</p>
+
+<p>
   <strong>Does this user do sport?</strong>
   <% if @user.do_sport %>
     <%= "Yes" %>

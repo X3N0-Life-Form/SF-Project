@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140405193714) do
     t.string   "date_of_birth"
     t.float    "weight"
     t.float    "ideal_weight"
+    t.float    "height"
     t.boolean  "do_sport"
     t.boolean  "would_do_sport"
   end

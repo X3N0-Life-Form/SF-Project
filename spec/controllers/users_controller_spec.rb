@@ -85,7 +85,7 @@ describe UsersController do
     before(:each) do
       @attr = { :name => "New User", :email => "user@example.com",
         :date_of_birth => "06/01/1990",
-        :weight => "65", :ideal_weight => "60",
+        :weight => "65", :ideal_weight => "60", :height => "1.80",
         :do_sport => false, :would_do_sport => true,
         :password => "foobar", :password_confirmation => "foobar" }
     end

@@ -3,6 +3,7 @@ class AddUserAttributes < ActiveRecord::Migration
     add_column :users, :date_of_birth, :string
     add_column :users, :weight, :float
     add_column :users, :ideal_weight, :float
+    add_column :users, :height, :float
     add_column :users, :do_sport, :boolean
     add_column :users, :would_do_sport, :boolean
   end
@@ -11,6 +12,7 @@ class AddUserAttributes < ActiveRecord::Migration
     add_column :users, :date_of_birth, :string
     add_column :users, :weight, :float
     add_column :users, :ideal_weight, :float
+    add_column :users, :height, :float
     add_column :users, :do_sport, :boolean
     add_column :users, :would_do_sport, :boolean
   end
@@ -19,6 +21,7 @@ class AddUserAttributes < ActiveRecord::Migration
     remove_column :users, :date_of_birth
     remove_column :users, :weight
     remove_column :users, :ideal_weight
+    remove_column :users, :height
     remove_column :users, :do_sport
     remove_column :users, :would_do_sport
   end

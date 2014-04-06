@@ -10,6 +10,7 @@ describe User do
       :date_of_birth => "06/01/1990",
       :weight => "65",
       :ideal_weight => "60",
+      :height => "1.80",
       :do_sport => false,
       :would_do_sport => true
     }
@@ -204,7 +205,7 @@ describe User do
     end
 
     it "valid 2.0" do
-      User.new(@attr.merge(:weight => "70.0")).
+      User.new(@attr.merge(:weight => "70.00")).
         should be_valid
     end
 

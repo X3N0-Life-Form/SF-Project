@@ -7,6 +7,8 @@
       <th>Email</th>
       <th>Date of Birth</th>
       <th>Weight (in kg)</th>
+      <th>Height (in m)</th>
+      <th>IMC/BMI</th>
       <th>Does sport?</th>
       <!-- 3 filler th -->
       <th></th>
@@ -22,6 +24,8 @@
         <td><%= user.email %></td>
 	<td><%= user.date_of_birth %></td>
 	<td><%= user.weight %></td>
+	<td><%= user.height %></td>
+	<td><%= user.getIMC() %></td>
 	<td>
 	  <% if user.do_sport %>
 	    <%= "Yes" %>

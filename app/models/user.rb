@@ -39,6 +39,9 @@ class User < ActiveRecord::Base
                            :numericality => { :less_than => :weight },
                            :format => { :with => float_regex }
 
+  validates :height, :presence => true,
+                     :format => { :with => float_regex }
+
   #No time to test first
   def getAge()
     birth = Date.parse(self.date_of_birth)
@@ -52,6 +55,10 @@ class User < ActiveRecord::Base
       end
     end
     return age
+  end
+
+  def getIMC()
+    return self.weight / ( self.height * self.height )
   end
 
   ### end of my stuff ###
