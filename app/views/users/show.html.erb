@@ -29,13 +29,34 @@
 <p>
   <strong>Date of Birth:</strong>
   <%= @user.date_of_birth %>
-  (Age <%= "insert age here" %>)
+  (<%= @user.getAge() %> years old)
 </p>
 
 <p>
   <strong>Weight:</strong>
   <%= @user.weight %> kg
   (ideal weight: <%= @user.ideal_weight %> kg)
+</p>
+
+<p>
+  <strong>Does this user do sport?</strong>
+  <% if @user.do_sport %>
+    <%= "Yes" %>
+  <% else %>
+    <%= "No" %>
+  <% end %>
+</p>
+<p>
+  <% if @user.do_sport%>
+    <strong>Would s/he like to do more?</strong>
+  <% else %>
+    <strong>Would s/he like to do some?</strong>
+  <% end %>
+  <% if @user.would_do_sport %>
+    <%= "Yes" %>
+  <% else %>
+    <%= "No" %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
